@@ -1,59 +1,86 @@
-class Calculator {
-    constructor(previousOperandTextElement, previousOperandTextElementStyle) {
-        this.previousOperandTextElement = previousOperandTextElement
-        this.currentOperandTextElement = currentOperandTextElement
-        this.clear()
- }
+const numbers = document.querySelectorAll(".data-number");
+const operations = document.querySelectorAll(".data-operation");
+const equal = document.querySelector("#data-equals");
+const deleteBtn = document.querySelector("#data-delete");
+const allClear = document.querySelector("#data-all-Clear");
+const previousOperandText = document.querySelector("#data-previous-operand");
+const currentOperandText = document.querySelector("#data-current-operand");
 
+let firstNum = "";
+let nextNum = null;
+let operation = "";
+let shouldResetNum = false;
 
- clear(){
-    this.currentOperand = ""
-    this.previousOperand = ""
-    this.operation = undefined
+function operate(firstNum, nextNum, operation) {
+  firstNum = Number(firstNum);
+  nextNum = Number(nextNum);
 
+  switch (operation) {
+    case "+":
+      return firstNum + nextNum;
+    case "-":
+      return firstNum - nextNum;
+    case "✖":
+      return firstNum * nextNum;
+    case "÷":
+      return nextNum !== 0 ? firstNum / nextNum : "Error";
+    default:
+      return nextNum;
+  }
+}
 
+function appendNumber(number) {
+  if (previousOperandText.textContent.length >= 21) return;
+  if (shouldResetNum) {
+    previousOperandText.textContent = "";
+    shouldResetNum = false;
+  }
+  previousOperandText.textContent += number;
+}
 
- }
+function chooseOperation(operator) {
+  if (operation !== "") calculate();
+  firstNum = previousOperandText.textContent;
+  operation = operator;
+  currentOperandText.textContent = `${firstNum} ${operation}`;
+  shouldResetNum = true;
+}
 
+function calculate() {
+  if (operation === "" || shouldResetNum) return;
+  nextNum = previousOperandText.textContent;
+  const result = operate(firstNum, nextNum, operation);
+  previousOperandText.textContent = result;
+  currentOperandText.textContent = `${firstNum} ${operation} ${nextNum} = ${result}`;
+  operation = "";
+  shouldResetNum = true;
+}
 
- delete()  {
+function clear() {
+  previousOperandText.textContent = "";
+  currentOperandText.textContent = "";
+  firstNum = "";
+  nextNum = null;
+  operation = "";
+  shouldResetNum = false;
+}
 
- }
+function deleteNumber() {
+  previousOperandText.textContent = previousOperandText.textContent.slice(
+    0,
+    -1
+  );
+}
 
- appendNumber(number){
-    this.currentOperand = number
+// Event Listeners
+numbers.forEach((button) =>
+  button.addEventListener("click", () => appendNumber(button.textContent))
+);
 
- }
+operations.forEach((button) =>
+  button.addEventListener("click", () => chooseOperation(button.textContent))
+);
 
- chooseOperation(operation){
-
- }
-
- compute(){
-
- }
-
- updateDisplay(){
-    this.currentOperandTextElement.innerText = this.currentOperand
-
-
- }
-
-} 
-
-const numberButtons = document.querySelectorAll('[data-number]')
-const operationButtons = document.querySelectorAll('[data-operation]')
-const equalsButton = document.querySelector('[data-equals]')
-const deleteButton = document.querySelector('[data-delete]')
-const allClearButton = document.querySelector('[data-all-Clear]')
-const previousOperandTextElement = document.querySelector('[data-previous-operand]')
-const currentOperandTextElement = document.querySelector('[data-current-operand]')
-
-const calculator = new Calculator(previousOperandTextElement, currentOperandTextElement)
-
-numberButtons.forEach(button => {
-    button.addEventListener("click", ()=>{
-        calculator.appendNumber(button.innerText)
-        calculator.updateDisplay()
-    })
-})
+equal.addEventListener("click", calculate);
+allClear.addEventListener("click", clear);
+deleteBtn.addEventListener("click", deleteNumber);

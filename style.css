@@ -1,59 +1,82 @@
-*, *::before, *::after {
-    box-sizing: border-box;
-    font-family: 'Roboto Slab', serif;
-    font-weight: normal;
-
+*,
+*::before,
+*::after {
+  box-sizing: border-box;
+  font-family: "Roboto Slab", serif;
+  font-weight: normal;
 }
 
-body{
-   background: linear-gradient(to right, #eb3ddc, #ff8250) ;
-   margin: 50px;
-   padding: 25px;
+body {
+  background: linear-gradient(to right, #eb3ddc, #ff8250);
+  margin: 50px;
+  padding: 25px;
 }
 
-.calculator{
-    display: grid;
-    justify-content: center;
-    align-content: center;
-    min-width: 100vh ;
-    grid-template-columns: repeat(4, 100px);
-    grid-template-rows: minmax(120px, auto) repeat(5, 100px);
-    
-
+.calculator {
+  display: grid;
+  justify-content: center;
+  align-content: center;
+  min-width: 100vh;
+  grid-template-columns: repeat(4, 100px);
+  grid-template-rows: minmax(120px, auto) repeat(5, 100px);
 }
 
 .calculator > button {
-    cursor: pointer;
-    font-size: 2rem;
-    border: 1px solid white;
-    outline: none;
-    background-color: rgb(255, 255, 255, .75);
-;
+  cursor: pointer;
+  font-size: 2rem;
+  border: 1px solid white;
+  outline: none;
+  background-color: rgb(255, 255, 255, 0.75);
+}
+.calculator > button:hover {
+  background-color: rgb(255, 255, 255, 0.9);
+}
+.span-two {
+  grid-column: span 2;
+}
+.answer {
+  grid-column: 1 / -1;
+  background-color: rgb(0, 0, 0, 0.75);
+  display: flex;
+  align-items: flex-end;
+  justify-content: space-around;
+  flex-direction: column;
+  padding: 10px;
+  word-wrap: break-word;
+  word-break: break-all;
+}
+.answer .user-input {
+  color: rgb(255, 255, 255, 0.75);
+  font-size: 1.5rem;
+}
+.answer .total {
+  color: white;
+  font-size: 2.5rem;
+}
+#data-previous-operand {
+  font-size: 3rem;
+  color: antiquewhite;
+}
 
-
-}.calculator > button:hover{
-    background-color: rgb(255, 255, 255, .9);
+#data-current-operand {
+  font-size: 3rem;
+  color: rgb(151, 151, 151);
 }
-.span-two{
-    grid-column: span 2;
+footer {
+  background-color: black;
+  font-size: 1.8rem;
+  color: aliceblue;
+  position: fixed;
+  left: 0;
+  bottom: 0;
+  width: 100%;
+  text-align: center;
 }
-.answer{
-    grid-column: 1 / -1;
-    background-color: rgb(0, 0, 0, .75);
-    display: flex;
-    align-items: flex-end;
-    justify-content: space-around;
-    flex-direction: column;
-    padding: 10px;
-    word-wrap: break-word;
-    word-break: break-all;
-
+a {
+  margin-inline: 3px;
+  color: aliceblue;
 }
-.answer .user-input{
-    color: rgb(255, 255, 255, .75);
-    font-size: 1.5rem;
+#gh-logo {
+  width: 30px;
+  height: 30px;
 }
-.answer .total{
-    color: white;
-    font-size: 2.5rem;
-} 

@@ -1,5 +1,6 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -7,34 +8,38 @@
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Roboto+Slab&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="style.css">
-    <script src="main.js"></script>
-    <title>Document</title>
+    <title>Calculator🧮</title>
 </head>
+
 <body>
     <div class="calculator">
         <div class="answer">
-            <div data-previous-operand class="previous-operand"></div>
-            <div data-current-operand class="current-operand"></div>
+            <div id="data-previous-operand" class="previous-operand"></div>
+            <div id="data-current-operand" class="current-operand"></div>
         </div>
-        <button data-all-Clear class="span-two">AC</button>
-        <button data-delete>⌫</button>
-        <button data-operation>÷</button>
-        <button data-number>1</button>
-        <button data-number>2</button>
-        <button data-number>3</button>
-        <button data-operation>+</button>
-        <button data-number>4</button>
-        <button data-number>5</button>
-        <button data-number>6</button>
-        <button data-operation>-</button>
-        <button data-number>7</button>
-        <button data-number>8</button>
-        <button data-number>9</button>
-        <button data-operation>✖</button>
-        <button data-number>.</button>
-        <button data-number>0</button>
-        <button dat-equals class="span-two">=</button>
-
+        <button id="data-all-Clear" class="span-two">AC</button>
+        <button id="data-delete">⌫</button>
+        <button class="data-operation">÷</button>
+        <button class="data-number">1</button>
+        <button class="data-number">2</button>
+        <button class="data-number">3</button>
+        <button class="data-operation">+</button>
+        <button class="data-number">4</button>
+        <button class="data-number">5</button>
+        <button class="data-number">6</button>
+        <button class="data-operation">-</button>
+        <button class="data-number">7</button>
+        <button class="data-number">8</button>
+        <button class="data-number">9</button>
+        <button class="data-operation">✖</button>
+        <button class="data-number">.</button>
+        <button class="data-number">0</button>
+        <button id="data-equals" class="span-two">=</button>
     </div>
+
+    <footer>Made by:<a href=https://github.com/ArpanNA><img id="gh-logo" src="githublogo.png" alt="github logo" />
+            ArpanNa</a></footer>
+    <script src="main.js"></script>
 </body>
+
 </html>
